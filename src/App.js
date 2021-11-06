@@ -14,12 +14,14 @@ export default function App() {
         <img
           src={
             pokemon !== undefined
-              ? pokemon.sprites.other.home.front_default
+              ? pokemon.sprites.other.dream_world.front_default === null
+                ? pokemon.sprites.front_default
+                : pokemon.sprites.other.dream_world.front_default
               : pokeball
           }
           alt={pokemon !== undefined ? pokemon.name : ""}
-          height="150px"
-          width="150px"
+          height="250px"
+          width="250px"
         />
       </div>
     </div>

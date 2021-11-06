@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Search from "./Search";
+import pokeball from "./images/pokeball.png";
 export default function App() {
   const [pokemon, setPokemon] = useState();
   const resultfunc = (data) => {
@@ -9,16 +10,16 @@ export default function App() {
     <div>
       <Search resultfunc={resultfunc} />
       <div>
-        {console.log(pokemon)}
+        {console.log(pokemon, pokeball)}
         <img
           src={
             pokemon !== undefined
               ? pokemon.sprites.other.home.front_default
-              : ""
+              : pokeball
           }
-          alt=""
-          height="200px"
-          width="200px"
+          alt={pokemon !== undefined ? pokemon.name : ""}
+          height="150px"
+          width="150px"
         />
       </div>
     </div>

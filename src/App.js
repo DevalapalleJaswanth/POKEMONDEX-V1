@@ -1,29 +1,24 @@
-import React, { useState } from "react";
-import Search from "./Search";
-import pokeball from "./images/pokeball.png";
+import React, { useState, useEffect } from "react";
+import { GetAllPokemon } from "./Services";
+import Loader from "./Loader";
+import AuthContext from "./AuthContext";
+import Home from "./Home";
+
 export default function App() {
-  const [pokemon, setPokemon] = useState();
-  const resultfunc = (data) => {
-    setPokemon(data);
+  const [p, setP] = useState(null);
+  const allresultfunc = (data) => {
+    setTimeout(() => {
+      setP(data);
+    }, 2000);
   };
+  useEffect(() => {
+    GetAllPokemon(allresultfunc);
+  }, []);
   return (
     <div>
-      <Search resultfunc={resultfunc} />
-      <div>
-        {console.log(pokemon, pokeball)}
-        <img
-          src={
-            pokemon !== undefined
-              ? pokemon.sprites.other.dream_world.front_default === null
-                ? pokemon.sprites.front_default
-                : pokemon.sprites.other.dream_world.front_default
-              : pokeball
-          }
-          alt={pokemon !== undefined ? pokemon.name : ""}
-          height="250px"
-          width="250px"
-        />
-      </div>
+      <AuthContext.Provider value={{ allPokemon: p }}>
+        {p === null || p === undefined ? <Loader /> : <Home />}
+      </AuthContext.Provider>
     </div>
   );
 }

@@ -1,4 +1,46 @@
-.App {
-  font-family: sans-serif;
+.rotate {
+  height: 30px;
+  width: 30px;
+  animation: rotation infinite 3s linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: #2196f3;
+  padding: 10px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
   text-align: center;
+}
+@media (min-width: 600px) {
+  .grid-container {
+    grid-template-columns: auto auto auto;
+  }
+}
+@media (min-width: 800px) {
+  .grid-container {
+    grid-template-columns: auto auto auto auto;
+  }
 }

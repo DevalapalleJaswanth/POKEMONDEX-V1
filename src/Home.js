@@ -7,11 +7,7 @@ export default function Home() {
   const [pokemon, setPokemon] = useState();
   const [pokemonList, setPokemonList] = useState();
   const h = useContext(AuthContext);
-  var list = [];
-  const cardscallback = (data) => {
-    list.push(data);
-    //console.log(list);
-  };
+
   const resultfunc = (data) => {
     setPokemonList(data);
     //console.log(pokemonList);
@@ -19,7 +15,7 @@ export default function Home() {
 
   return (
     <div>
-      <Search resultfunc={resultfunc} cardscallback={cardscallback} />
+      <Search resultfunc={resultfunc} />
       <div>
         {console.log(pokemon, pokeball, h.allPokemon)}
         <img
@@ -35,7 +31,9 @@ export default function Home() {
           width="250px"
         />
       </div>
-      <div>{console.log(list)}</div>
+      <div>
+        <Cards allPokemons={pokemonList} />
+      </div>
     </div>
   );
 }

@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GetPokemonResource } from "./Services";
+import SingleCard from "./SingleCard";
 import axios from "axios";
 import "./styles.css";
 export default function Cards(props) {
+  useEffect(() => {});
   return (
     <div>
       <div className="grid-container">
-        <div className="grid-item">2</div>
+        {props.allPokemons
+          ? props.allPokemons.map((item, i) => (
+              <div className="grid-item">
+                <SingleCard name={item.name} />
+              </div>
+            ))
+          : ""}
       </div>
     </div>
   );

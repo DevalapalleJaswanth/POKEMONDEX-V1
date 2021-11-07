@@ -20,7 +20,7 @@ export default function Search(props) {
       });
 
       if (k === name.length) {
-        GetPokemonResource(item.url, props.cardscallback);
+        //GetPokemonResource(item.url, props.cardscallback);
         list.push(item);
       }
     });

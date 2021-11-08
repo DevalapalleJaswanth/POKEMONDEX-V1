@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { GetPokemon } from "./Services";
+import { Link } from "react-router-dom";
 export default function SingleCard(props) {
   const [pokemon, setPokemon] = useState();
   const cardcallback = (data) => {
@@ -19,8 +20,8 @@ export default function SingleCard(props) {
             : ""
         }
         alt={pokemon !== undefined ? pokemon.name : ""}
-        height="50px"
-        width="50px"
+        height="auto"
+        width="100%"
       />
     </div>
   );

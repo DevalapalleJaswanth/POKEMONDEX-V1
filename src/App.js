@@ -3,6 +3,7 @@ import { GetAllPokemon } from "./Services";
 import Loader from "./Loader";
 import AuthContext from "./AuthContext";
 import Home from "./Home";
+//import Home1 from "./Home1";
 
 export default function App() {
   const [p, setP] = useState(null);

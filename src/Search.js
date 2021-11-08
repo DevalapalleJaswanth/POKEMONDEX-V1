@@ -1,13 +1,27 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { GetPokemonResource } from "./Services";
+import Cards from "./Cards";
 import AuthContext from "./AuthContext";
 export default function Search(props) {
+  const [pokemonList, setPokemonList] = useState();
   const s = useContext(AuthContext);
-  const handler = (name) => {
+  const handler = (e) => {
+    var name;
+    if (e.target.value) {
+      name = e.target.value;
+    } else {
+      name = " ";
+    }
     console.log(name, s.allPokemon);
-    var n = name.split("");
-    searchfunc(n, props.resultfunc);
+    var n;
+    if (name !== " " || name !== undefined || name !== null) {
+      n = name.split("");
+      searchfunc(n, props.resultfunc);
+    } else {
+      //props.resultfunc([]);
+      setPokemonList([]);
+    }
   };
   const searchfunc = (name, callbackfunc) => {
     var list = [];
@@ -24,18 +38,23 @@ export default function Search(props) {
         list.push(item);
       }
     });
-    // console.log(list);
-    callbackfunc(list);
+
+    setPokemonList(list);
+    //callbackfunc(list);
   };
 
   return (
     <div>
       <input
+        style={{ padding: "10px", margin: "10px" }}
         type="text"
         onChange={(e) => {
-          handler(e.target.value);
+          handler(e);
         }}
       />
+      <div>
+        <Cards allPokemons={pokemonList} />
+      </div>
     </div>
   );
 }

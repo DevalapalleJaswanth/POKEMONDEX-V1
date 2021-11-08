@@ -17,10 +17,7 @@ export default function Cards(props) {
           ))}
         </div>
       ) : (
-        <div>
-          Welcome to Pokedex.
-          <img src={pokeball} alt="" />
-        </div>
+        ""
       )}
     </div>
   );

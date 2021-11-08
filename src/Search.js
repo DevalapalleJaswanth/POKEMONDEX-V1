@@ -46,6 +46,7 @@ export default function Search(props) {
   return (
     <div>
       <input
+        placeholder="Search"
         style={{ padding: "10px", margin: "10px" }}
         type="text"
         onChange={(e) => {

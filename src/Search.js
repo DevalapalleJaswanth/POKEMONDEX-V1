@@ -17,13 +17,13 @@ export default function Search(props) {
     var n;
     if (name !== " " || name !== undefined || name !== null) {
       n = name.split("");
-      searchfunc(n, props.resultfunc);
+      searchfunc(n);
     } else {
       //props.resultfunc([]);
       setPokemonList([]);
     }
   };
-  const searchfunc = (name, callbackfunc) => {
+  const searchfunc = (name) => {
     var list = [];
     s.allPokemon.results.map((item, i) => {
       var k = 0;

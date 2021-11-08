@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-//import Search from "./Search";
+import Search from "./Search";
 import pokeball from "./images/pokeball.png";
 import AuthContext from "./AuthContext";
 import Cards from "./Cards";
@@ -54,20 +54,17 @@ export default function Home(props) {
         boxSizing: "border-box"
       }}
     >
-      <input
+      {/*<input
         style={{ padding: "10px", margin: "10px" }}
         type="text"
         onChange={(e) => {
           handler(e);
         }}
-      />
+      />*/}
+
       <Router>
         <Routes>
-          <Route
-            exact
-            path="/"
-            element={<Cards allPokemons={pokemonList} />}
-          ></Route>
+          <Route exact path="/" element={<Search />}></Route>
           <Route exact path="/card/:id" element={<Details />}></Route>
         </Routes>
       </Router>

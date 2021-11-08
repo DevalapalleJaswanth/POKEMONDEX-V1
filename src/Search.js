@@ -3,6 +3,9 @@ import axios from "axios";
 import { GetPokemonResource } from "./Services";
 import Cards from "./Cards";
 import AuthContext from "./AuthContext";
+import pokeball from "./images/pokeball.png";
+import "./styles.css";
+
 export default function Search(props) {
   const [pokemonList, setPokemonList] = useState();
   const s = useContext(AuthContext);
@@ -19,7 +22,6 @@ export default function Search(props) {
       n = name.split("");
       searchfunc(n);
     } else {
-      //props.resultfunc([]);
       setPokemonList([]);
     }
   };
@@ -34,13 +36,11 @@ export default function Search(props) {
       });
 
       if (k === name.length) {
-        //GetPokemonResource(item.url, props.cardscallback);
         list.push(item);
       }
     });
 
     setPokemonList(list);
-    //callbackfunc(list);
   };
 
   return (
@@ -53,6 +53,14 @@ export default function Search(props) {
         }}
       />
       <div>
+        {pokemonList !== undefined ? (
+          <Cards allPokemons={pokemonList} />
+        ) : (
+          <div>
+            Welcome to Pokedex.
+            <img src={pokeball} alt="" />
+          </div>
+        )}
         <Cards allPokemons={pokemonList} />
       </div>
     </div>

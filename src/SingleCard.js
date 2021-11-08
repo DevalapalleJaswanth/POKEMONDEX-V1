@@ -23,6 +23,7 @@ export default function SingleCard(props) {
         height="auto"
         width="100%"
       />
+      {/* <div>{pokemon !== undefined ? pokemon.name : ""}</div>*/}
     </div>
   );
 }

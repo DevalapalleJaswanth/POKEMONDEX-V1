@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SingleCard from "./SingleCard";
 import "./styles.css";
-
+import pokeball from "./images/pokeball.png";
 export default function Cards(props) {
   return (
     <div>
@@ -17,7 +17,10 @@ export default function Cards(props) {
           ))}
         </div>
       ) : (
-        ""
+        <div>
+          Welcome to Pokedex.
+          <img src={pokeball} alt="" />
+        </div>
       )}
     </div>
   );
